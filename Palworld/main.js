@@ -1,5 +1,6 @@
 const Info = require('./schema/info');
 const Players = require('./schema/players');
+const GameData = require('./schema/game_data');
 
 class Palworld {
     static async GetInfo() {
@@ -19,7 +20,7 @@ class Palworld {
 
             console.log(info);
         } catch (error) {
-            console.error('Palworld', 'Get Server Info', error);
+            console.error('Palworld', 'Get the Server Info', error);
         }
     }
 
@@ -43,6 +44,28 @@ class Palworld {
             console.error('Palworld', 'Get Player List', error);
         }
     }
+
+    // Not fully implemented? Saw someone needed to mod the API to get it working.
+    /*static async GetGameData() {
+        let url = `${process.env.PALWORLD_API_URL}/v1/api/game-data`;
+        let config = {
+            method: 'GET',
+            maxBodyLength: Infinity,
+            headers: {
+                Accept: 'application/json', 
+                Authorization: `Basic ${process.env.PALWORLD_API_AUTH}`,
+            },
+        };
+
+        try {
+            const response = await fetch(url, config);
+            const gameData = console.log(await response.json());
+
+            console.log(gameData);
+        } catch (error) {
+            console.error('Palworld', 'Get World Actor Snapshot', error);
+        }
+    }*/
 }
 
 module.exports = Palworld;
