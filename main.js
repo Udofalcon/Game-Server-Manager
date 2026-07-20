@@ -4,6 +4,7 @@ async function main() {
     await Palworld.GetInfo();
     await Palworld.GetPlayers();
     // await Palworld.GetGameData();
+    await Palworld.GetMetrics();
 }
 
 main();

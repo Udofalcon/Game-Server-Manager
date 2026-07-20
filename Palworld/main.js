@@ -1,6 +1,7 @@
 const Info = require('./schema/info');
 const Players = require('./schema/players');
 const GameData = require('./schema/game_data');
+const Metrics = require('./schema/metrics');
 
 class Palworld {
     static async GetInfo() {
@@ -66,6 +67,27 @@ class Palworld {
             console.error('Palworld', 'Get World Actor Snapshot', error);
         }
     }*/
+
+    static async GetMetrics() {
+        let url = `${process.env.PALWORLD_API_URL}/v1/api/metrics`;
+        let config = {
+            method: 'GET',
+            maxBodyLength: Infinity,
+            headers: {
+                Accept: 'application/json', 
+                Authorization: `Basic ${process.env.PALWORLD_API_AUTH}`,
+            },
+        };
+
+        try {
+            const response = await fetch(url, config);
+            const metrics = new Metrics(await response.json());
+
+            console.log(metrics);
+        } catch (error) {
+            console.error('Palworld', 'Get the Server Metrics', error);
+        }
+    }
 }
 
 module.exports = Palworld;
