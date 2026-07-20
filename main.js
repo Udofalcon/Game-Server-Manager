@@ -1,7 +1,8 @@
 const Palworld = require('./Palworld/main');
 
 async function main() {
-    await Palworld.GetServerInfo();
+    await Palworld.GetInfo();
+    await Palworld.GetPlayers();
 }
 
 main();

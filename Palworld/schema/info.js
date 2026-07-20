@@ -8,7 +8,7 @@ class Info {
         version,
         servername,
         description,
-        worldguid
+        worldguid,
     }) {
         this.version = version;
         this.servername = servername;
